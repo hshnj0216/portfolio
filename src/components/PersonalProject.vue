@@ -1,10 +1,5 @@
 <template>
-    <div class="project" v-bind:class="project.position">
-        <div class="demo-video">
-            <iframe :src="'https://www.youtube.com/embed/' + project.id + '?enablejsapi=1'" frameborder="0" class="yt-iframe"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
+    <div class="project">
         <div class="project-details">
             <div class="project-title">
                 <h3>{{ project.title }}</h3>
@@ -53,18 +48,6 @@ export default {
     max-width: 600px;
     height: 550px;
     gap: 0.5rem;
-}
-
-.demo-video {
-    width: 100%;
-    position: relative;
-    grid-column: 1/13;
-    grid-row: 1/8;
-}
-
-.demo-video iframe {    
-    width: 100%;
-    height: 100%;
 }
 
 .project-details{

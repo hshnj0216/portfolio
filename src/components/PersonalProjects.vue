@@ -22,77 +22,26 @@ export default {
         return {
             personalProjects: [
                 {
-                    id: 'sBxLi-FJUBQ?si=Qj30Ffa629F6GgQG',
                     title: 'Kanji Kaizen',
                     technologies: ['nextjs', 'nodejs', 'express', 'typescript', 'docker', 'git', 'github'],
                     description: 'An interactive kanji learning application that allows users to study, practice, or test their Kanji knowledge. It uses the Kanji Character Classification Web API for advanced drawing features. ',
                     github: 'https://github.com/hshnj0216/kanji_kaisen',
-                    position: 'center'
                 },
                 {
-                    id: 'C7A-EFfuRRc?si=d4uWAl5yP-KVYvJy',
                     title: 'Kanji Classification Web API',
                     technologies: ['csharp', 'dotnetcore', 'python', 'git', 'docker', 'github'],
                     description: 'An interactive kanji learning application that allows users to study, practice, or test their Kanji knowledge. It uses the Kanji Character Classification Web API for advanced drawing features. ',
                     github: 'https://github.com/hshnj0216/KanjiClassificationWebAPI',
-                    position: 'left'
                 },
                 {
-                    id: 'C7A-EFfuRRc?si=d4uWAl5yP-KVYvJy',
                     title: 'Laravel Job Appication Tracker',
                     technologies: ['php', 'laravel', 'git', 'github', 'docker', 'html5', 'css3'],
                     description: 'A Laravel application for tracking job applications. fafdfdafadfsdfsdfas',
                     github: 'https://github.com/hshnj0216/KanjiClassificationWebAPI',
-                    position: 'right'
                 }
             ],
-            currentPosition: 0,
-            youtubePlayers: [],
         }
-    },
-    methods: {
-        rotateCarousel(direction) {
-            const numProjects = this.personalProjects.length;
-
-            console.log('youtube players', this.youtubePlayers);
-            this.pauseAllVideos();
-
-            if (direction == 'prev') {
-                this.currentPosition = (this.currentPosition - 1 + numProjects) % numProjects;
-            } else {
-                this.currentPosition = (this.currentPosition + 1) % numProjects;
-            }
-
-            //Update the position
-            this.personalProjects.forEach((project, index) => {
-                let position = '';
-                if (index == this.currentPosition) position = 'center';
-                else if (index == (this.currentPosition - 1 + numProjects) % numProjects) position = 'left';
-                else if (index == (this.currentPosition + 1) % numProjects) position = 'right';
-                project.position = position;
-            })
-        },
-        getProjectPosition(index) {
-            const numProjects = this.personalProjects.length;
-            const relativePosition = (index - this.currentPosition + numProjects) % numProjects;
-
-            if (relativePosition == 0) {
-                return '22%';
-            } else if (relativePosition == 1) {
-                return '0%';
-            } else if (relativePosition == 2) {
-                return '50%';
-            }
-        },
-        onYoutubePlayerAPIReady() {
-
-        },
-        pauseAllVideos() {
-
-        }
-
-    },
-
+    }
 }
 </script>
 <style scoped>
