@@ -10,6 +10,9 @@
         <li>
             <a href="#certificates-badges">Certificates & Badges</a>
         </li>
+        <li>
+            <a href="">Contact Me</a>
+        </li>
     </ul>
 </nav>
 </template>

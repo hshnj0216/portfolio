@@ -3,11 +3,10 @@
         <h2>Certificates & Badges</h2>
         <div id="certificate-badge-list">
             <CredlyBadge v-for="(badge, index) in badges" :key="badge.badgeId" :src="badge.src" :publicURL="badge.publicURL" 
-                :style="{ animationDelay: `${index * 0.5}s`}"
+                :style="{ animationDelay: `${index * 0.3}s`}"
             />
         </div>
     </section>
-
 </template>
 <script>
 import CredlyBadge from './CredlyBadge.vue';
@@ -69,7 +68,8 @@ export default {
     }
 }
 
-.credly-badge{
-    animation: slideIn 05.s forwards;
+.animate-certificates .credly-badge{
+    animation: slideIn 0.3s forwards;
+    animation-fill-mode: backwards;
 }
 </style>

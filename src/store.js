@@ -28,6 +28,9 @@ const store = createStore({
 			['jquery', 'jQuery'],
             ['laravel', 'Laravel'],
             ['codeigniter', 'CodeIgniter'],
+            ['pytorch', 'PyTorch'],
+            ['tailwind', 'Tailwind CSS'],
+            ['bootstrap', 'Bootstrap'],
 		]),
 	},
     getters: {

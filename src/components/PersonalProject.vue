@@ -32,5 +32,7 @@ a:visited {
     color: var(--off-white);
     text-decoration: none;
 }
-
+.project .description{
+    font-size: 1.1rem;
+}
 </style>

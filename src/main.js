@@ -10,7 +10,7 @@ app.directive('scrollanimation', {
             ([entry]) => {
                 if(entry.isIntersecting) {
                     const animationClass = el.dataset.animation;
-                    el.classList.Add(animationClass);
+                    el.classList.add(animationClass);
                 } else {
                     const animationClass = el.dataset.animation;
                     el.classList.remove(animationClass);

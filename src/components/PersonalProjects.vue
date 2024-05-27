@@ -17,19 +17,25 @@ export default {
             personalProjects: [
                 {
                     title: 'Kanji Kaizen',
-                    technologies: ['nextjs', 'nodejs', 'express', 'typescript', 'docker', 'git', 'github'],
+                    technologies: ['nextjs', 'react', 'tailwind', 'nodejs', 'express', 'typescript', 'html5', 'css3', 'javascript'],
                     description: 'An interactive kanji learning application that allows users to study, practice, or test their Kanji knowledge. It uses the Kanji Character Classification Web API for advanced drawing features. ',
                     github: 'https://github.com/hshnj0216/kanji_kaisen',
                 },
                 {
                     title: 'Kanji Classification Web API',
-                    technologies: ['csharp', 'dotnetcore', 'python', 'git', 'docker', 'github'],
+                    technologies: ['csharp', 'dotnetcore', 'python'],
                     description: 'An interactive kanji learning application that allows users to study, practice, or test their Kanji knowledge. It uses the Kanji Character Classification Web API for advanced drawing features. ',
                     github: 'https://github.com/hshnj0216/KanjiClassificationWebAPI',
                 },
                 {
+                    title: 'Djangonics',
+                    technologies: ['django', 'python', 'jquery', 'bootstrap', 'sass', 'html5', 'css3', 'javascript'],
+                    description: 'An e-commerce application built with Django that features IBM Cloud, Google Sign In, and PayPal payment integration.',
+                    github: 'https://github.com/hshnj0216/djangonics-ecommerce-app',
+                },
+                {
                     title: 'Laravel Job Appication Tracker',
-                    technologies: ['php', 'laravel', 'git', 'github', 'docker', 'html5', 'css3'],
+                    technologies: ['php', 'laravel', 'html5', 'css3'],
                     description: 'A Laravel application for tracking job applications. fafdfdafadfsdfsdfas',
                     github: 'https://github.com/hshnj0216/KanjiClassificationWebAPI',
                 }
@@ -42,6 +48,8 @@ export default {
 #personal-projects {
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    padding: 5rem;
 }
 #project-list{
     display: grid;

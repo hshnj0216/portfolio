@@ -62,6 +62,7 @@ export default {
   font-size: 1.5rem;
   background-color: var(--ultramarine);
   overflow: scroll;
+  overflow-x: hidden;
   scroll-snap-type: y mandatory;
 
 }

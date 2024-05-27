@@ -22,6 +22,7 @@ export default {
 </script>
 <style scoped>
 #technologies-skills {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,16 +30,13 @@ export default {
   padding: 4rem 0;
   scroll-snap-align: start;
   outline: solid 1px #fff;
-
 }
-
 h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
   color: var(--off-white);
   text-align: center;
 }
-
 #tech-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -59,8 +57,7 @@ h2 {
     opacity: 1;
   }
 }
-
-.technology-badge {
+.animate-technologies .technology-badge {
   display: flex;
   align-items: center;
   justify-content: center;
