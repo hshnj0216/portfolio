@@ -1,6 +1,6 @@
 <template>
     <div class="credly-badge">
-        <a :href="publicURL">
+        <a :href="publicURL" target="_blank">
             <img :src="src" alt="credly badge">
         </a>
     </div>

@@ -15,7 +15,31 @@ export default{
 }
 </script>
 <style scoped>
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+#introduction{
+    box-sizing: border-box;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    outline: solid 1px #fff;
+    padding: 5rem;
+}
 h1, p{
     text-align: left;
+}
+h1{
+    animation: slideIn 0.5s backwards ease-out;
+}
+p{
+    animation: slideIn 0.8s backwards ease-out;
+    animation-delay: 0.2s;
 }
 </style>

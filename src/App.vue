@@ -2,10 +2,10 @@
   <div id="app-grid">
     <NavigationPanel /> 
     <div id="content">
-      <IntroductionSection />
-      <TechnologiesSkills />  
-      <PersonalProjects />
-      <CertificatesBadges />
+      <IntroductionSection v-scrollanimation data-animation="animate-introduction" />
+      <TechnologiesSkills v-scrollanimation data-animation="animate-technologies" />  
+      <PersonalProjects v-scrollanimation data-animation="animate-projects" />
+      <CertificatesBadges v-scrollanimation data-animation="animate-certificates" />
     </div>
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color:var(--off-white)
+  color:var(--off-white);
 }
 #app-grid{
   display: grid;
@@ -53,12 +53,20 @@ export default {
   min-height: 100vh;
 }
 #content{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   grid-column: 3/13;
   align-items: center;
-  padding: 5rem;
+  padding: 0 5rem;
   font-size: 1.5rem;
   background-color: var(--ultramarine);
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+
+}
+section{
+  scroll-snap-align: start;
+  min-height: 100vh;
 }
 </style>./components/TechnologiesSkills.vue

@@ -2,7 +2,7 @@
     <section id="technologies-skills">
         <h2>Technologies/Skills</h2>
         <div id="tech-list">
-            <TechnologyBadge v-for="[key, value] in getTechnologies" :key="key" :label="value" />             
+            <TechnologyBadge v-for="([key, value], index) in getTechnologies" :key="key" :label="value" :style="{animationDelay: `${index *  0.1}s`}"/>             
         </div>
     </section>
 </template>
@@ -26,8 +26,10 @@ export default {
   flex-direction: column;
   align-items: center;
   max-width: 100%;
-  min-height: 100vh;
   padding: 4rem 0;
+  scroll-snap-align: start;
+  outline: solid 1px #fff;
+
 }
 
 h2 {
@@ -46,6 +48,18 @@ h2 {
   margin: 0 auto;
 }
 
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .technology-badge {
   display: flex;
   align-items: center;
@@ -53,7 +67,9 @@ h2 {
   padding: 1rem;
   border: 1px solid var(--off-white);
   font-size: 1rem;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.2s, transform 0.2s;
+  animation: slideIn 0.2s forwards;
+  animation-fill-mode: backwards;
 }
 
 .technology-badge:hover {

@@ -2,7 +2,9 @@
     <section id="certificates-badges">
         <h2>Certificates & Badges</h2>
         <div id="certificate-badge-list">
-            <CredlyBadge v-for="badge in badges" :key="badge.badgeId" :src="badge.src" :publicURL="badge.publicURL" />
+            <CredlyBadge v-for="(badge, index) in badges" :key="badge.badgeId" :src="badge.src" :publicURL="badge.publicURL" 
+                :style="{ animationDelay: `${index * 0.5}s`}"
+            />
         </div>
     </section>
 
@@ -46,7 +48,7 @@ export default {
 
 };
 </script>
-<style scoped>
+<style>
 #certificate-badge-list{
     display: grid;
     width: 100%;
@@ -54,5 +56,20 @@ export default {
     box-sizing: border-box;
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.credly-badge{
+    animation: slideIn 05.s forwards;
 }
 </style>
