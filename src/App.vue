@@ -1,29 +1,29 @@
 <template>
   <div id="app-grid">
     <NavigationPanel /> 
-    <div id="content">
+    <main id="content">
       <IntroductionSection v-scrollanimation data-animation="animate-introduction" />
-      <TechnologiesSkills v-scrollanimation data-animation="animate-technologies" />  
       <PersonalProjects v-scrollanimation data-animation="animate-projects" />
       <CertificatesBadges v-scrollanimation data-animation="animate-certificates" />
-    </div>
+      <ContactSection v-scrollanimation data-animation="animate-contact" />
+    </main>
   </div>
 </template>
 
 <script>
 import IntroductionSection from './components/IntroductionSection.vue';
 import NavigationPanel from './components/NavigationPanel.vue';
-import TechnologiesSkills from './components/TechnologiesSkills.vue';
 import PersonalProjects from './components/PersonalProjects.vue';
 import CertificatesBadges from './components/CertificatesBadges.vue';
+import ContactSection from './components/ContactSection.vue';
 export default {
   name: 'App',
   components: {
     IntroductionSection,
     NavigationPanel,
-    TechnologiesSkills,
     PersonalProjects,
     CertificatesBadges,
+    ContactSection,
   }
 }
 </script>
@@ -36,6 +36,9 @@ export default {
   --ultramarine: #18196D;
   --dark-blue: #2C1492;
   --off-white: #F8F8F8;
+  --text-alt: #a499e8;
+  --pastel-purple:  #BDA0CB;
+  --light-lavender: #E6E6FA;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -52,7 +55,7 @@ export default {
   position: sticky;
   min-height: 100vh;
 }
-#content{
+main{
   height: 100vh;
   display: flex;
   flex-direction: column;

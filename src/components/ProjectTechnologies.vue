@@ -20,5 +20,11 @@ export default {
 .project-technologies{
     display: flex;
     gap: 0.3rem;
+    flex-wrap: wrap;
+}
+.project-technologies .technology-badge{
+    max-height: 50%;
+    height: fit-content;
+    padding: 0.5rem;
 }
 </style>

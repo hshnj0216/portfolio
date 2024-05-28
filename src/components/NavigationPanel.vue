@@ -2,7 +2,7 @@
 <nav>
     <ul id="nav-list">
         <li class="active">
-            <a href="#technologies-skills">Technologies/Skills</a>
+            <a href="#introduction">About Me</a>
         </li>
         <li>
             <a href="#personal-projects">Projects</a>
@@ -11,7 +11,7 @@
             <a href="#certificates-badges">Certificates & Badges</a>
         </li>
         <li>
-            <a href="">Contact Me</a>
+            <a href="#contact">Contact</a>
         </li>
     </ul>
 </nav>
