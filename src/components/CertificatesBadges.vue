@@ -3,7 +3,7 @@
         <h2>Certificates & Badges</h2>
         <div id="certificate-badge-list">
             <CredlyBadge v-for="(badge, index) in badges" :key="badge.badgeId" :src="badge.src" :publicURL="badge.publicURL" 
-                :style="{ animationDelay: `${index * 0.3}s`}"
+                :style="{ animationDelay: `${index * 0.1}s`}"
             />
         </div>
     </section>

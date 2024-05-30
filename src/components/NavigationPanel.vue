@@ -1,16 +1,16 @@
 <template>
 <nav>
     <ul id="nav-list">
-        <li class="active">
+        <li class="introduction">
             <a href="#introduction">About Me</a>
         </li>
-        <li>
+        <li class="personal-projects">
             <a href="#personal-projects">Projects</a>
         </li>
-        <li>
+        <li class="certificates-badges">
             <a href="#certificates-badges">Certificates & Badges</a>
         </li>
-        <li>
+        <li class="contact">
             <a href="#contact">Contact</a>
         </li>
     </ul>
@@ -18,7 +18,7 @@
 </template>
 <script>
 export default{
-
+    
 }
 </script>
 <style scoped>
@@ -50,8 +50,8 @@ nav{
 #nav-list li.active{
     background-color: var(--ultramarine);
     position: relative;
+    transition: background-color 0.25s ease-in;
 }
-
 #nav-list li.active::before,
 #nav-list li.active::after{
     --border-radius: 1rem;
@@ -62,12 +62,10 @@ nav{
     right: 0;
     background-color: var(--medium-blue);
 }
-
 #nav-list li.active::before{
     box-shadow: 5px 5px 0 5px var(--ultramarine);
     top: calc(var(--border-radius) * -1);
     border-radius: 0 0 100vw 0;
-
 }
 #nav-list li.active::after{
     box-shadow: 5px -5px 0 5px var(--ultramarine);

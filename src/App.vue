@@ -2,10 +2,10 @@
   <div id="app-grid">
     <NavigationPanel /> 
     <main id="content">
-      <IntroductionSection v-scrollanimation data-animation="animate-introduction" />
-      <PersonalProjects v-scrollanimation data-animation="animate-projects" />
-      <CertificatesBadges v-scrollanimation data-animation="animate-certificates" />
-      <ContactSection v-scrollanimation data-animation="animate-contact" />
+      <IntroductionSection v-scrollanimation data-animation="animate-introduction" data-nav="introduction"/>
+      <PersonalProjects v-scrollanimation data-animation="animate-projects" data-nav="personal-projects"/>
+      <CertificatesBadges v-scrollanimation data-animation="animate-certificates" data-nav="certificates-badges"/>
+      <ContactSection v-scrollanimation data-animation="animate-contact" data-nav="contact"/>
     </main>
   </div>
 </template>
@@ -39,6 +39,9 @@ export default {
   --text-alt: #a499e8;
   --pastel-purple:  #BDA0CB;
   --light-lavender: #E6E6FA;
+  --navy-blue: #000080;
+  --deep-indigo: #4B0082;
+  --blackish-purple: #242145;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
