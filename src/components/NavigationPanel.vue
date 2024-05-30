@@ -1,35 +1,52 @@
 <template>
-<nav>
-    <ul id="nav-list">
-        <li class="introduction">
-            <a href="#introduction">About Me</a>
-        </li>
-        <li class="personal-projects">
-            <a href="#personal-projects">Projects</a>
-        </li>
-        <li class="certificates-badges">
-            <a href="#certificates-badges">Certificates & Badges</a>
-        </li>
-        <li class="contact">
-            <a href="#contact">Contact</a>
-        </li>
-    </ul>
-</nav>
+    <nav>
+        <ul id="nav-list">
+            <li class="introduction">
+                <a href="#introduction">Introduction</a>
+            </li>
+            <li class="personal-projects">
+                <a href="#personal-projects">Projects</a>
+            </li>
+            <li class="certificates-badges">
+                <a href="#certificates-badges">Certificates & Badges</a>
+            </li>
+            <li class="contact">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
 </template>
 <script>
-export default{
-    
+export default {
+    name: 'NavigationPanel',
+    mounted() {
+        this.addSmoothScrolling();
+    },
+    methods: {
+        addSmoothScrolling() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = e.currentTarget.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        },
+    },
 }
 </script>
 <style scoped>
-nav{
+nav {
     background-color: var(--medium-blue);
     position: sticky;
     top: 0;
     max-height: 100vh;
     grid-column: 1/3;
 }
-#nav-list{
+
+#nav-list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -42,18 +59,27 @@ nav{
     padding-left: 1rem;
     width: 100%;
 }
-#nav-list li{
+
+#nav-list li {
     box-sizing: border-box;
     border-radius: 100vh 0 0 100vh;
-    padding: 2rem 2rem;
+    /* padding: 2rem 2rem; */
 }
-#nav-list li.active{
+
+#nav-list li:not(.active):hover {
+    background-color: var(--ultramarine);
+    opacity: 0.6;
+    transition: background-color 0.25s ease-in;
+}
+
+#nav-list li.active {
     background-color: var(--ultramarine);
     position: relative;
     transition: background-color 0.25s ease-in;
 }
+
 #nav-list li.active::before,
-#nav-list li.active::after{
+#nav-list li.active::after {
     --border-radius: 1rem;
     content: '';
     position: absolute;
@@ -62,18 +88,27 @@ nav{
     right: 0;
     background-color: var(--medium-blue);
 }
-#nav-list li.active::before{
+
+#nav-list li.active::before {
     box-shadow: 5px 5px 0 5px var(--ultramarine);
     top: calc(var(--border-radius) * -1);
     border-radius: 0 0 100vw 0;
 }
-#nav-list li.active::after{
+
+#nav-list li.active::after {
     box-shadow: 5px -5px 0 5px var(--ultramarine);
     bottom: calc(var(--border-radius) * -1);
     border-radius: 0 100vw 0 0;
 }
-#nav-list a{
+
+#nav-list a {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
     color: white;
     text-decoration: none;
+    font-weight: 600;
+    padding: 2rem 2rem;
 }
 </style>

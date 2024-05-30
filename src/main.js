@@ -10,8 +10,11 @@ app.directive('scrollanimation', {
             ([entry]) => {
                 if(entry.isIntersecting) {
                     const animationClass = el.dataset.animation;
-                    el.classList.add(animationClass);
-
+                    const hasAnimated = el.classList.contains('has-animated');
+                    if (!hasAnimated) {
+                        el.classList.add(animationClass);
+                        el.classList.add('has-animated');
+                    }
                     const navId = el.dataset.nav;
                     if(navId) {
                         const navItem = document.querySelector(`#nav-list .${navId}`);
@@ -22,7 +25,7 @@ app.directive('scrollanimation', {
                             navItem.classList.add('active');
                         }
                     }
-                } else {
+                } else if (!el.classList.contains('has-animated')) {
                     const animationClass = el.dataset.animation;
                     el.classList.remove(animationClass);
                 }
