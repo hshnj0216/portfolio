@@ -48,6 +48,9 @@ export default {
 };
 </script>
 <style>
+#certificates-badges{
+    height: 100dvh;
+}
 #certificate-badge-list{
     display: grid;
     width: 100%;

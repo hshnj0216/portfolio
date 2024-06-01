@@ -29,7 +29,7 @@ export default {
     padding: 0.8rem;
     display: grid;
     grid-template-rows: repeat(6, minmax(0, 1fr));
-    background-color: var(--midnight-blue);
+    background-color: var(--blackish-purple);
     opacity: 0.9;
     color: var(--light-lavender);
 }
