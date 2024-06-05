@@ -51,32 +51,29 @@ export default {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 3rem;
-    max-height: 100vh;
 }
 #project-list{
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
     gap: 1rem;
-    max-height: 75vh;
-}
-/* For medium screen sizes */
-@media only screen and (min-width: 600px) {
-    #project-list{
-        grid-template-columns: 1fr 1fr;
-    }
-}
+    flex-direction: column;
+ }
+ h2{
+    margin-top: 0;
+    font-size: 1.5rem;
+ }
 
 /* For large screen sizes */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1100px) {
+    #personal-projects{
+        padding: 3rem;
+    }
     #project-list{
+        display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
     }
-}
-
-h2 {
-    grid-row: 1/2;
-    margin-top: 0;
+    h2{
+        font-size: 3rem;
+    }
 }
 </style>

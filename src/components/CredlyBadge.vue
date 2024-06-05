@@ -6,20 +6,34 @@
     </div>
 </template>
 <script>
-export default{
+export default {
     props: ['badgeId', 'src', 'publicURL'],
 }
 </script>
 <style scoped>
-.credly-badge{
-    /* padding: 1rem;
-    overflow: hidden;
-    border: solid 1px var(--off-white); */
-}
-.credly-badge img{
+.credly-badge img {
+    width: 6rem;
+    height: 6rem;
     transition: transform 0.2s ease;
 }
-.credly-badge img:hover{
-   transform: scale(1.5);
+
+.credly-badge img:hover {
+    transform: scale(1.5);
+}
+
+@media only screen and (min-width: 768px) {
+    .credly-badge img {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .credly-badge img{
+        width: 10rem;
+        height: 10rem;
+    }
+
+
 }
 </style>

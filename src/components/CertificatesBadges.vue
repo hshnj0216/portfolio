@@ -2,9 +2,8 @@
     <section id="certificates-badges">
         <h2>Certificates & Badges</h2>
         <div id="certificate-badge-list">
-            <CredlyBadge v-for="(badge, index) in badges" :key="badge.badgeId" :src="badge.src" :publicURL="badge.publicURL" 
-                :style="{ animationDelay: `${index * 0.1}s`}"
-            />
+            <CredlyBadge v-for="(badge, index) in badges" :key="badge.badgeId" :src="badge.src"
+                :publicURL="badge.publicURL" :style="{ animationDelay: `${index * 0.1}s` }" />
         </div>
     </section>
 </template>
@@ -48,16 +47,17 @@ export default {
 };
 </script>
 <style>
-#certificates-badges{
-    height: 100dvh;
-}
-#certificate-badge-list{
-    display: grid;
-    width: 100%;
-    padding: 1.5rem;
+#certificates-badges {
     box-sizing: border-box;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4rem;
+}
+
+#certificate-badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 0.8rem;
 }
 
 @keyframes slideIn {
@@ -65,14 +65,41 @@ export default {
         transform: translateX(-100%);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0);
         opacity: 1;
     }
 }
 
-.animate-certificates .credly-badge{
+.animate-certificates .credly-badge {
     animation: slideIn 0.3s forwards;
     animation-fill-mode: backwards;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1100px) {
+    #certificates-badges {
+        padding: 3rem;
+        box-sizing: border-box;
+        height: 100dvh;
+    }
+
+    #certificates-badges h2{
+        margin-top: 0;
+        font-size: 3rem;
+    }
+
+    #certificate-badge-list {
+        display: grid;
+        width: 100%;
+        box-sizing: border-box;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+        gap: 2.5rem;
+    }
 }
 </style>

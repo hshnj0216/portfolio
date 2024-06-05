@@ -18,13 +18,13 @@ export default {
 </script>
 <style scoped>
 .project-technologies{
+    grid-row: 2/3;
     display: flex;
-    gap: 0.3rem;
+    gap: 0.2rem;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 .project-technologies .technology-badge{
-    max-height: 50%;
-    height: fit-content;
-    padding: 0.5rem;
+    flex:0 1 auto;
 }
 </style>

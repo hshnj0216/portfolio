@@ -61,30 +61,38 @@ export default {
 #app-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-}
-
-#app-grid nav {
-  position: sticky;
-  min-height: 100vh;
+  min-width: 320px;
 }
 
 main {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   grid-column: 3/13;
   align-items: center;
-  padding: 0 5rem;
-  font-size: 1.5rem;
+  padding-inline: 1rem;
+  font-size: 1rem;
   background-color: var(--ultramarine);
   overflow: scroll;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
-
+  z-index: 0;
 }
 
 section {
   scroll-snap-align: start;
-  min-height: 100vh;
+  padding-block: 1rem;
 }
-</style>./components/TechnologiesSkills.vue
+
+@media only screen and (min-width: 1100px) {
+  #app-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  section{
+    padding-block: 3rem;
+  }
+
+}
+</style>
+./components/TechnologiesSkills.vue

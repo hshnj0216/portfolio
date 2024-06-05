@@ -13,8 +13,7 @@ export default{
     text-align: center;
     border: solid 1px var(--off-white);
     padding: 0.3rem;
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     font-size: 0.8rem;
-    user-select: none;
 }
 </style>
