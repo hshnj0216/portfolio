@@ -80,8 +80,10 @@ main {
 }
 
 section {
+  box-sizing: border-box;
   scroll-snap-align: start;
   padding-block: 1rem;
+  padding-inline: 1rem;
 }
 
 @media only screen and (min-width: 1100px) {
@@ -91,6 +93,10 @@ section {
 
   section{
     padding-block: 3rem;
+  }
+
+  section > h2{
+    font-size: 3rem;
   }
 
 }

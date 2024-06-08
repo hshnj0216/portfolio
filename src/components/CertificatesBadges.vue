@@ -49,6 +49,9 @@ export default {
 <style>
 #certificates-badges {
     box-sizing: border-box;
+    padding: 1rem;
+    width: 100%;
+    max-height: 100dvh;
 }
 
 #certificate-badge-list {
@@ -57,7 +60,8 @@ export default {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    gap: 0.8rem;
+    gap: 1rem;
+    width: 100%;
 }
 
 @keyframes slideIn {
@@ -78,14 +82,16 @@ export default {
 }
 
 @media only screen and (min-width: 768px) {
-
+    #certificate-badge-list{
+        gap: 2;
+    }
 }
 
 @media only screen and (min-width: 1100px) {
     #certificates-badges {
         padding: 3rem;
-        box-sizing: border-box;
         height: 100dvh;
+        max-height: 100dvh;
     }
 
     #certificates-badges h2{
@@ -94,12 +100,9 @@ export default {
     }
 
     #certificate-badge-list {
-        display: grid;
         width: 100%;
         box-sizing: border-box;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: repeat(4, minmax(0, 1fr));
-        gap: 2.5rem;
+        gap: 3rem;
     }
 }
 </style>

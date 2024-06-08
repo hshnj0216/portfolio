@@ -63,7 +63,7 @@ export default {};
 	box-sizing: border-box;
 	height: 100dvh;
 	max-height: 100dvh;
-	min-height: 660px;
+	padding: 1rem;
 }
 
 #introduction-paragraph{
@@ -121,12 +121,27 @@ strong {
 	font-size: 3rem;
 }
 
+@media only screen and (min-width: 768px) {
+	#introduction{
+		padding: 2rem;
+	}
+	h1{
+		font-size: 3rem;
+	}
+	p{
+		font-size: 1.3rem;
+	}
+
+	#socials-container>p {
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+	}
+}
+
 @media only screen and (min-width: 1100px) {
 	#introduction {
 		box-sizing: border-box;
 		height: 100dvh;
-		max-height: 100vh;
-		scroll-snap-align: start;
 		padding: 5rem;
 	}
 
@@ -136,7 +151,7 @@ strong {
 	}
 
 	h1 {
-		font-size: 4rem;
+		font-size: 5rem;
 		animation: slideIn 0.3s backwards ease-out;
 	}
 

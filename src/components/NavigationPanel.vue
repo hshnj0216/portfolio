@@ -135,6 +135,12 @@ nav {
     display: none;
 }
 
+@media only screen and (min-width: 768px) {
+  a > i {
+    font-size: 1.5rem;
+  }
+}
+
 @media only screen and (min-width: 1100px) {
     nav {
         background-color: var(--medium-blue);

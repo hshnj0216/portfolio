@@ -35,12 +35,6 @@ export default {
                     description: 'An e-commerce application built with Django that features IBM Cloud, Google Sign In, and PayPal payment integration.',
                     github: 'https://github.com/hshnj0216/djangonics-ecommerce-app',
                 },
-                {
-                    title: 'Laravel Job Appication Tracker',
-                    technologies: ['php', 'laravel', 'html5', 'css3'],
-                    description: 'A Laravel application for tracking job applications. fafdfdafadfsdfsdfas',
-                    github: 'https://github.com/hshnj0216/KanjiClassificationWebAPI',
-                }
             ],
         }
     }
@@ -66,6 +60,8 @@ export default {
 @media only screen and (min-width: 1100px) {
     #personal-projects{
         padding: 3rem;
+        height: 100dvh;
+        max-height: 100dvh;
     }
     #project-list{
         display: grid;
