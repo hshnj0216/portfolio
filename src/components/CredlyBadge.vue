@@ -12,8 +12,8 @@ export default {
 </script>
 <style scoped>
 .credly-badge img {
-    width: 9rem;
-    height: 9rem;
+    width: 6rem;
+    height: 6rem;
     transition: transform 0.2s ease;
 }
 
@@ -21,19 +21,10 @@ export default {
     transform: scale(1.5);
 }
 
-/* @media only screen and (min-width: 768px) {
-    .credly-badge img {
-        width: 8.5rem;
-        height: 8.5rem;
-    }
-}
-
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 460px) {
     .credly-badge img{
         width: 9rem;
         height: 9rem;
     }
-
-
-} */
+}
 </style>

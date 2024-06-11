@@ -51,14 +51,12 @@ export default {
     box-sizing: border-box;
     padding: 1rem;
     width: 100%;
-    max-height: 100dvh;
 }
 
 #certificate-badge-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: repeat(6, minmax(0, 1fr));
     box-sizing: border-box;
     gap: 1rem;
     width: 100%;
@@ -81,9 +79,15 @@ export default {
     animation-fill-mode: backwards;
 }
 
+
 @media only screen and (min-width: 768px) {
+    #certificates-badges h2{
+        font-size: 2rem;
+    }
     #certificate-badge-list{
         gap: 2;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(4, minmax(0, 1fr));
     }
 }
 
@@ -91,7 +95,7 @@ export default {
     #certificates-badges {
         padding: 3rem;
         height: 100dvh;
-        max-height: 100dvh;
+        min-height: 100dvh;
     }
 
     #certificates-badges h2{
@@ -100,9 +104,9 @@ export default {
     }
 
     #certificate-badge-list {
-        width: 100%;
-        box-sizing: border-box;
-        gap: 3rem;
+        padding-inline: 3rem;
+        gap: 1.5rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 </style>

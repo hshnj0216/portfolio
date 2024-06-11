@@ -62,7 +62,7 @@ export default {};
 #introduction {
 	box-sizing: border-box;
 	height: 100dvh;
-	max-height: 100dvh;
+	min-height: 100dvh;
 	padding: 1rem;
 }
 
@@ -141,7 +141,6 @@ strong {
 @media only screen and (min-width: 1100px) {
 	#introduction {
 		box-sizing: border-box;
-		height: 100dvh;
 		padding: 5rem;
 	}
 
