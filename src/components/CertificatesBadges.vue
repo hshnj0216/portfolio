@@ -104,8 +104,8 @@ export default {
     }
 
     #certificate-badge-list {
-        padding-inline: 3rem;
-        gap: 1.5rem;
+        padding-inline: 4rem;
+        gap: 2.5rem;
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }

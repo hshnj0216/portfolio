@@ -141,7 +141,7 @@ strong {
 @media only screen and (min-width: 1100px) {
 	#introduction {
 		box-sizing: border-box;
-		padding: 5rem;
+		padding-inline: 5rem;
 	}
 
 	h1,
@@ -150,7 +150,7 @@ strong {
 	}
 
 	h1 {
-		font-size: 5rem;
+		font-size: 4rem;
 		animation: slideIn 0.3s backwards ease-out;
 	}
 

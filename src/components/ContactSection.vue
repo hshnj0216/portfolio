@@ -19,8 +19,8 @@
             </div>
             <div class="input-group" id="textarea-group">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" v-model="message"
-                    @input="v$.message.$touch()" tabindex="1"></textarea>
+                <textarea name="message" id="message" v-model="message" @input="v$.message.$touch()"
+                    tabindex="1"></textarea>
                 <div class="small-container">
                     <small v-if="v$.message.$error">Message is required and must be at least 50 characters long.</small>
                 </div>
@@ -36,16 +36,17 @@
 import { ref } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, alpha, email } from '@vuelidate/validators';
+import emailjs from '@emailjs/browser';
 export default {
     name: 'ContactSection',
     setup() {
         const name = ref('');
-        const userEmail = ref(''); 
+        const userEmail = ref('');
         const message = ref('');
 
         const rules = {
             name: { required, alpha, minLength: minLength(2) },
-            userEmail: { required, email }, 
+            userEmail: { required, email },
             message: { required, minLength: minLength(50) },
         };
 
@@ -54,11 +55,55 @@ export default {
         async function handleSubmit() {
             const isFormValid = await v$.value.$validate();
             if (isFormValid) {
-                alert('Form is valid');
+                sendEmail();
             } else {
                 alert('Form is not valid');
             }
         }
+
+        function sendEmail() {
+            const serviceID = process.env.VUE_APP_EMAILJS_SERVICE_ID;
+            const templateID = process.env.VUE_APP_EMAILJS_TEMPLATE_ID;
+            const apiKey = process.env.VUE_APP_EMAILJS_API_KEY;
+            const templateParams = {
+                to_name: 'Leonard',
+                from_name: name.value,
+                from_email: userEmail.value,
+                message: message.value,
+            };
+
+            emailjs.init({
+                publicKey: apiKey,
+                // Do not allow headless browsers
+                blockHeadless: true,
+                blockList: {
+                   
+                },
+                limitRate: {
+                    // Set the limit rate for the application
+                    id: 'app',
+                    // Allow 1 request per 10s
+                    throttle: 10000,
+                },
+            });
+
+            console.log(templateID, serviceID);
+
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then((response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Message sent successfully');
+                    name.value = '';
+                    userEmail.value = '';
+                    message.value = '';
+                    v$.value.$reset();
+                }, (error) => {
+                    console.error('FAILED...', error);
+                    alert('Failed to send message. Please try again later.');
+                });
+        }
+
 
         return {
             name,
@@ -73,7 +118,6 @@ export default {
 <style scoped>
 #contact {
     height: 100dvh;
-    min-height: 100dvh;
     box-sizing: border-box;
     padding: 1rem;
     display: flex;
@@ -84,7 +128,7 @@ export default {
 
 h2 {
     text-align: center;
-    margin-top: 0 ;
+    margin-top: 0;
 }
 
 form {
@@ -106,20 +150,21 @@ form {
     flex-direction: column;
 }
 
-.small-container{
+.input-group>label {
+    text-align: left;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.small-container {
     height: 0.8rem;
 }
 
-.input-group small {
+.input-group small,
+.input-group label {
     font-size: 0.8rem;
     margin-top: 0.2rem;
-}
-
-.input-group label {
-    margin-bottom: 0.5rem;
-    font-size: 0.8em;
     color: var(--light-lavender);
-    text-align: left;
 }
 
 .input-group input,
@@ -139,20 +184,21 @@ form {
     outline: none;
 }
 
-#name-group{
-    grid-row: 1/2;
-}
-#email-group{
-    grid-row: 2/3;
-}
-#textarea-group {
-    display: flex;
-    grid-row: 3/6;
+#textarea-group>textarea {
+    flex-grow: 1;
+    max-width: 100%;
 }
 
-#textarea-group>textarea {
-    resize: none;
-    flex-grow: 1;
+#name-group {
+    grid-row: 1/2;
+}
+
+#email-group {
+    grid-row: 2/3;
+}
+
+#textarea-group {
+    grid-row: 3/6;
 }
 
 #button-container {
@@ -183,68 +229,29 @@ button:active {
     transform: scale(0.95);
 }
 
-@media only screen and (min-width: 1100px) {
-    #contact {
-        height: 100dvh;
-        padding: 3rem;
-        padding-inline: 10rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    h2 {
-        font-size: 3rem;
-    }
-
+@media only screen and (min-width: 768px) {
     form {
-        padding: 2rem;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(6, minmax(0, 1fr));
-        gap: 2rem;
+        gap: 1rem;
     }
 
-    .input-group {
-        margin-bottom: 1rem;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .input-group small {
-        font-size: 0.8rem;
-        margin-top: 0.2rem;
-    }
-
-    .input-group label {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
-        color: var(--light-lavender);
-        text-align: left;
+    .input-group>label {
+        font-size: 1rem;
     }
 
     .input-group input,
     .input-group textarea {
-        padding: 0.75rem;
-        border: 1px solid #444;
-        border-radius: var(--border-radius);
-        background-color: var(--dark-blue);
-        color: var(--off-white);
         font-size: 1rem;
-        transition: border-color 0.3s;
     }
 
-    .input-group input:focus,
-    .input-group textarea:focus {
-        border-color: var(--medium-blue);
-        outline: none;
-    }
 
-    #name-group{
+    #name-group {
         grid-row: 1/2;
         grid-column: 1/2;
     }
 
-    #email-group{
+    #email-group {
         grid-row: 1/2;
         grid-column: 2/3;
     }
@@ -253,32 +260,32 @@ button:active {
         grid-column: 1 / 3;
         grid-row: 2 / 6;
         margin-top: 1.5rem;
-        margin-bottom: 0;
-    }
-
-    #textarea-group>textarea {
-        resize: none;
-        height: 75%;
-        max-width: 100%;
-        max-height: 80%;
     }
 
     #button-container {
-        grid-row: 6 / 7;
         grid-column: 1 / 3;
-        text-align: center;
         margin-top: 1.5rem;
     }
 
     button {
-        background-color: var(--medium-blue);
-        color: var(--off-white);
-        padding: 0.75rem 2rem;
-        border: none;
-        border-radius: var(--border-radius);
         font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    #contact {
+        padding: 3rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    .input-group small,
+    .input-group label,
+    .input-group input,
+    .input-group textarea {
+        font-size: 1rem;
     }
 }
 </style>
