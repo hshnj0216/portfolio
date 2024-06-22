@@ -1,7 +1,7 @@
 <template>
     <section id="contact">
         <h2>Contact</h2>
-        <form @submit="handleSubmit" @submit.prevent="submitForm">
+        <form @submit.prevent="handleSubmit">
             <div class="input-group" id="name-group">
                 <label for="name">Name</label>
                 <input id="name" type="text" name="name" v-model="name" @input="v$.name.$touch()" tabindex="1" />
@@ -26,23 +26,31 @@
                 </div>
             </div>
             <div id="button-container">
-                <button tabindex="1">Send Message</button>
+                <button tabindex="1" :disabled="!isFormValid">Send Message</button>
             </div>
         </form>
+        <ToastNotification :showToast="showToast" :message="toastMessage" @update:showToast="showToast = $event" />
     </section>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, alpha, email } from '@vuelidate/validators';
 import emailjs from '@emailjs/browser';
+import ToastNotification from './ToastNotification.vue';
+
 export default {
     name: 'ContactSection',
+    components: {
+        ToastNotification,
+    },
     setup() {
         const name = ref('');
         const userEmail = ref('');
         const message = ref('');
+        const showToast = ref(false);
+        const toastMessage = ref('');
 
         const rules = {
             name: { required, alpha, minLength: minLength(2) },
@@ -50,11 +58,18 @@ export default {
             message: { required, minLength: minLength(50) },
         };
 
-        const v$ = useVuelidate(rules, { name, userEmail, message });
+        const state = { name, userEmail, message };
+        const v$ = useVuelidate(rules, state);
+
+        const isFormValid = computed(() => {
+            const validation = v$.value;
+            return validation && !validation.name.$error && !validation.userEmail.$error && !validation.message.$error;
+        });
+
 
         async function handleSubmit() {
-            const isFormValid = await v$.value.$validate();
-            if (isFormValid) {
+            const isFormValidNow = await v$.value.$validate();
+            if (isFormValidNow) {
                 sendEmail();
             } else {
                 alert('Form is not valid');
@@ -77,7 +92,7 @@ export default {
                 // Do not allow headless browsers
                 blockHeadless: true,
                 blockList: {
-                   
+
                 },
                 limitRate: {
                     // Set the limit rate for the application
@@ -87,34 +102,36 @@ export default {
                 },
             });
 
-            console.log(templateID, serviceID);
-
-
             emailjs.send(serviceID, templateID, templateParams)
                 .then((response) => {
                     console.log('SUCCESS!', response.status, response.text);
-                    alert('Message sent successfully');
+                    showToast.value = true;
+                    toastMessage.value = 'Message sent successfully';
                     name.value = '';
                     userEmail.value = '';
                     message.value = '';
                     v$.value.$reset();
                 }, (error) => {
                     console.error('FAILED...', error);
-                    alert('Failed to send message. Please try again later.');
+                    showToast.value = true;
+                    toastMessage.value = 'Failed to send message. Please try again later.';
                 });
         }
-
 
         return {
             name,
             userEmail,
             message,
             handleSubmit,
+            showToast,
+            toastMessage,
+            isFormValid,
             v$
         }
     }
 }
 </script>
+
 <style scoped>
 #contact {
     height: 100dvh;
@@ -143,6 +160,7 @@ form {
     gap: 1rem;
     width: 90%;
     max-height: 75%;
+    max-width: 520px;
 }
 
 .input-group {
@@ -275,7 +293,7 @@ button:active {
 @media only screen and (min-width: 1100px) {
     #contact {
         padding: 3rem;
-    }
+    }   
 
     h2 {
         font-size: 3rem;
